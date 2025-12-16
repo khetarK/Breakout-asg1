@@ -1,6 +1,8 @@
 #define PLAY_USING_GAMEOBJECT_MANAGER
 #include "Play.h"
 #include "game.h"
+#include "Score.h"
+
 
 using namespace Play;
 
@@ -27,6 +29,7 @@ bool MainGameUpdate( float elapsedTime )
 int MainGameExit( void )
 {
 	Play::DestroyManager();
+	delete[] highscore.high_scores.arr;
 	return PLAY_OK;
 }
 
