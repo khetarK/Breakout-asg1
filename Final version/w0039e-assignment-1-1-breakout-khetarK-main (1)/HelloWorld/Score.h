@@ -102,6 +102,10 @@ struct CurrentScore
 };
 
 
+void WriteInFile();
+
+void ReadMyFile();
+
 extern HighScore highscore;
 
 extern CurrentScore current_score;

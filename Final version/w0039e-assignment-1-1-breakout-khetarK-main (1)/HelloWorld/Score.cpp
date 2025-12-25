@@ -1,6 +1,8 @@
 #include "Score.h"
 #include "constants.h"
 #include "Play.h"
+#include "fstream"
+
 
 unsigned int currentScore = 0;
 
@@ -26,3 +28,33 @@ void DrawScore()
 	}
 }
 
+void WriteInFile()
+{
+	std::ofstream MyFile("HighScore.txt");
+
+	for (int i = 0; i < highscore.high_scores.size; i++)
+	{
+		MyFile << highscore.high_scores.arr[i] << std::endl;
+	}
+
+	MyFile.close();
+}
+
+
+void ReadMyFile()
+{
+	std::ifstream MyFile("HighScore.txt");	
+
+	if (MyFile)
+	{
+		unsigned int scores;
+
+		while (MyFile >> scores)
+		{
+			highscore.high_scores.append(scores);
+		}
+
+		MyFile.close();
+	}
+
+}

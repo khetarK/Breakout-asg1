@@ -4,6 +4,7 @@
 #include "Score.h"
 
 
+
 using namespace Play;
 
 
@@ -12,7 +13,9 @@ void MainGameEntry( PLAY_IGNORE_COMMAND_LINE )
 {
 	Play::CreateManager(DISPLAY_WIDTH, DISPLAY_HEIGHT, DISPLAY_SCALE);
 	SpawnBall();
+	ReadMyFile();
 	SetupScene();
+
 }
 
 // Called by PlayBuffer every frame (60 times a second!)
@@ -28,6 +31,7 @@ bool MainGameUpdate( float elapsedTime )
 // Gets called once when the player quits the game 
 int MainGameExit( void )
 {
+	WriteInFile();
 	Play::DestroyManager();
 	delete[] highscore.high_scores.arr;
 	return PLAY_OK;
